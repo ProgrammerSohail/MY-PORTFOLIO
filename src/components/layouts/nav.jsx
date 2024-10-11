@@ -7,7 +7,6 @@ import {
   Bars3Icon as MenuIcon,
   XMarkIcon as XIcon,
 } from "@heroicons/react/24/solid";
-import Navigation from "./MobileNav";
 
 const ServiceIcon = ({ className = "w-8 h-8" }) => (
   <svg
@@ -136,18 +135,69 @@ const VerticalNav = () => {
   ];
 
   return (
-    <Navigation
-      isMobile={isMobile}
-      isNavOpen={isNavOpen}
-      toggleNav={toggleNav}
-      closeNav={closeNav}
-      navItems={[
-        { to: "/", label: "Home", icon: "🏠" },
-        { to: "/about", label: "About", icon: "ℹ️" },
-        { to: "/services", label: "Services", icon: "🛠️" },
-        { to: "/contact", label: "Contact", icon: "📞" },
-      ]}
-    />
+    <>
+      {isMobile && (
+        <button
+          onClick={toggleNav}
+          className="fixed right-4 top-4 z-50 bg-yellow-500 text-white p-2 rounded-full shadow-lg"
+        >
+          {isNavOpen ? (
+            <XIcon className="w-6 h-6" />
+          ) : (
+            <MenuIcon className="w-6 h-6" />
+          )}
+        </button>
+      )}
+      <nav
+        className={`fixed left-0 md:top-[30%] z-40 h-screen transition-transform duration-300 ease-in-out
+                    ${
+                      isMobile
+                        ? `w-full bg-[rgba(0,0,0,0.7)] ${
+                            isNavOpen ? "translate-x-0" : "-translate-x-full"
+                          }`
+                        : "w-auto"
+                    }`}
+      >
+        {isMobile ? (
+          <div className="flex flex-col h-full">
+            <div className="flex items-center justify-center h-20 bg-[rgb(0,0,0)]">
+              <h1 className="text-white text-2xl font-bold uppercase">
+                Sohail's Page
+              </h1>
+            </div>
+            <ul className="flex-grow p-4">
+              {navItems.map((item, index) => (
+                <MobileNavItem
+                  key={index}
+                  {...item}
+                  isActive={location.pathname === item.to}
+                  onClick={closeNav}
+                />
+              ))}
+            </ul>
+          </div>
+        ) : (
+          <ul className="pt-8">
+            {navItems.map((item, index) => (
+              <DesktopNavItem
+                key={index}
+                {...item}
+                isActive={location.pathname === item.to}
+                onMouseEnter={() => {}}
+                onMouseLeave={() => {}}
+                delay={700 + index * 200}
+              />
+            ))}
+          </ul>
+        )}
+      </nav>
+      {isMobile && isNavOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-30"
+          onClick={closeNav}
+        ></div>
+      )}
+    </>
   );
 };
 
