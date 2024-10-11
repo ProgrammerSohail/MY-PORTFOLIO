@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import BlockImg from "../../public/imgs/Blockchain-Technology-1-details.jpg";
+import VotImg from "../../public/imgs/image-1.jpg";
 
 const ProjectShowcase = () => {
   const [currentProject, setCurrentProject] = useState(0);
@@ -12,7 +14,7 @@ const ProjectShowcase = () => {
       description:
         "A full-stack e-commerce solution with real-time inventory management.",
       technologies: ["React", "Node.js", "MongoDB", "WebSocket"],
-      image: "../../public/imgs/image-1.jpg",
+      image: `${VotImg}`,
       github: "https://github.com/ProgrammerSohail",
       live: "",
     },
@@ -31,7 +33,7 @@ const ProjectShowcase = () => {
       description:
         "A secure and transparent voting system built on blockchain technology.",
       technologies: ["Solidity", "Ethereum", "Web3.js", "React"],
-      image: "../../public/imgs/Blockchain-Technology-1-details.jpg",
+      image: `${BlockImg}`,
       github: "https://github.com/ProgrammerSohail",
       live: "",
     },

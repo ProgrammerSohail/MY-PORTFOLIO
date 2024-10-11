@@ -102,7 +102,7 @@ const ExperienceEducation = () => {
   );
   const FilterButton = ({ filter, activeFilter, onClick }) => (
     <button
-      className={`px-4 py-2 text-sm sm:px-6 sm:py-3 sm:text-base rounded-full transition-all duration-300 ${
+      className={`px-4 py-2 text-sm sm:px-6 sm:py-3 sm:text-base rounded-full bg-black/10 transition-all duration-300 ${
         activeFilter === filter
           ? "bg-gradient-to-r from-yellow-400 to-yellow-600 text-white"
           : "text-gray-300 hover:bg-white hover:bg-opacity-10"
