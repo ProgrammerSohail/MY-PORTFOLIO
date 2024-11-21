@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -6,6 +6,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
+import PropTypes from "prop-types";
 import VerticalNav from "./components/layouts/nav";
 import Home from "./website/index";
 import AboutMe from "./components/AboutMe";
@@ -61,6 +62,10 @@ const PageWrapper = ({ children }) => {
       </div>
     </>
   );
+};
+
+PageWrapper.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 function App() {
