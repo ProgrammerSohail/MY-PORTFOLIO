@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { FaFacebook, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import BackGround from "../components/layouts/BackGround";
 import MyImg from "../../public/imgs/sohail.png";
 
@@ -56,6 +57,13 @@ const TypedEffect = ({
   return <span>{currentText}</span>;
 };
 
+TypedEffect.propTypes = {
+  strings: PropTypes.arrayOf(PropTypes.string).isRequired,
+  typeSpeed: PropTypes.number,
+  backSpeed: PropTypes.number,
+  loop: PropTypes.bool,
+};
+
 const Home = () => {
   return (
     <section className="home w-screen -z-50 text-white grid md:grid-cols-2 inset-0  bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 overflow-hidden cursor-none ">
@@ -81,7 +89,7 @@ const Home = () => {
               animate={{ scale: 1 }}
               transition={{ duration: 0.5 }}
             >
-              Hello, I'm <span className="text-white">SOHAIL KHAN</span>
+              Hello, I&apos;m <span className="text-white">SOHAIL KHAN</span>
             </motion.h1>
 
             <motion.h2
@@ -90,7 +98,7 @@ const Home = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.5 }}
             >
-              I'm a{" "}
+              I&apos;m a{" "}
               <span className="text-yellow-400">
                 <TypedEffect
                   strings={[
@@ -117,8 +125,8 @@ const Home = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.5 }}
             >
-              Transforming ideas into stunning digital experiences. Let's create
-              something amazing together!
+              Transforming ideas into stunning digital experiences. Let&apos;s
+              create something amazing together!
             </motion.p>
 
             <motion.div
