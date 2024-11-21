@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Doughnut, Line, Radar } from "react-chartjs-2";
+import { Line, Radar } from "react-chartjs-2";
 import {
   Chart as ChartJS,
   ArcElement,
@@ -28,7 +28,7 @@ ChartJS.register(
 
 const FutureGoals = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [skillLevels, setSkillLevels] = useState({
+  const [skillLevels] = useState({
     Backend: 65,
     Database: 85,
     Laravel: 60,
@@ -66,7 +66,7 @@ const FutureGoals = () => {
     {
       title: "Professional Growth at AsonTechSol",
       description:
-        "Contributing to and growing with AsonTechSol, pushing the boundaries of what's possible in web development.",
+        "Contributing to and growing with AsonTechSol, pushing the boundaries of what&apos;s possible in web development.",
     },
   ];
 
@@ -75,7 +75,7 @@ const FutureGoals = () => {
       setActiveIndex((prevIndex) => (prevIndex + 1) % goals.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [goals.length]);
 
   const radarData = {
     labels: Object.keys(skillLevels),
@@ -176,7 +176,7 @@ const FutureGoals = () => {
   };
 
   return (
-    <div className="min-h-screen border-2 border-yellow-600 bg-yellow-600 bg-opacity-5 text-white py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-opacity-5 text-white py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <motion.h1
           className="text-4xl sm:text-5xl font-bold text-center mb-12"
@@ -197,7 +197,7 @@ const FutureGoals = () => {
               My Journey
             </h2>
             <p className="text-lg leading-relaxed mb-6">
-              As a passionate developer working with AsonTechSol, I'm on a
+              As a passionate developer working with AsonTechSol, I&apos;m on a
               relentless pursuit of excellence in programming. My journey
               involves mastering backend development, databases, Laravel, and
               PHP to create innovative and efficient web solutions.
@@ -272,9 +272,9 @@ const FutureGoals = () => {
               Professional Growth
             </h2>
             <p className="text-lg leading-relaxed mb-6">
-              At AsonTechSol, I'm not just developing software – I'm developing
-              my career. Each project is an opportunity to push boundaries and
-              explore new frontiers in web development.
+              At AsonTechSol, I&apos;m not just developing software &ndash;
+              I&apos;m developing my career. Each project is an opportunity to
+              push boundaries and explore new frontiers in web development.
             </p>
             <motion.div
               className="text-center"

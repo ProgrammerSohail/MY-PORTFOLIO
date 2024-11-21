@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import BlockImg from "../../public/imgs/Blockchain-Technology-1-details.jpg";
 import VotImg from "../../public/imgs/image-1.jpg";
@@ -40,16 +40,6 @@ const ProjectShowcase = () => {
     // Add more projects as needed
   ];
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (!isHovering) {
-        nextProject();
-      }
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [isHovering]);
-
   const nextProject = () => {
     setCurrentProject((prev) => (prev + 1) % projects.length);
   };
@@ -58,8 +48,18 @@ const ProjectShowcase = () => {
     setCurrentProject((prev) => (prev - 1 + projects.length) % projects.length);
   };
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!isHovering) {
+        nextProject();
+      }
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [isHovering, nextProject]);
+
   return (
-    <div className="border-2 border-yellow-600 bg-yellow-600 bg-opacity-5  py-20 px-4 sm:px-6 lg:px-8 ">
+    <div className=" bg-opacity-5  py-20 px-4 sm:px-6 lg:px-8 ">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-5xl font-bold mb-16 text-center text-transparent bg-clip-text bg-gradient-to-r from-[#facc14] to-[#cc8d04]">
           Project Showcase

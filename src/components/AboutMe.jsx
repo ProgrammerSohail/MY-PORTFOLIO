@@ -56,8 +56,9 @@ const AboutMe = () => {
         <ScrollIndicator />
         {[
           PersonalInfoCard,
-          ProjectShowcase,
           MySkills,
+          ProjectShowcase,
+
           FutureGoals,
           ExperienceEducation,
         ].map((Component, index) => (
