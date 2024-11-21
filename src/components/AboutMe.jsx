@@ -1,9 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import PersonalInfoCard from "./PersonalInfo";
 import MySkills from "./MySkills";
 import ExperienceEducation from "./Education";
-import { motion } from "framer-motion";
-import { FaArrowDown } from "react-icons/fa";
 import ProjectShowcase from "./ProjectShowcase";
 import ScrollIndicator from "./layouts/ScrollInd";
 import CVButton from "./CvBtn";
@@ -34,12 +32,15 @@ const AboutMe = () => {
       observerOptions
     );
 
-    sectionRefs.current.forEach((ref) => {
+    // Store current refs in a variable to avoid closure issues
+    const currentRefs = sectionRefs.current;
+
+    currentRefs.forEach((ref) => {
       if (ref) observer.observe(ref);
     });
 
     return () => {
-      sectionRefs.current.forEach((ref) => {
+      currentRefs.forEach((ref) => {
         if (ref) observer.unobserve(ref);
       });
     };
